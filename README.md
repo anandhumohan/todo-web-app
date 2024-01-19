@@ -25,7 +25,8 @@ Follow these steps to get the project up and running:
 2. **Build and Run the Frontend**:
 
    ```bash
-   cd /todo-web-app/src/main/resources/frontend
+   cd src/main/resources/frontend
+   npm install
    ng serve
    ```
 3. **Build and Run the Backend**:
