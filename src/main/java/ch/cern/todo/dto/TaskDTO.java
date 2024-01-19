@@ -1,23 +1,14 @@
-package ch.cern.todo.model;
-
-import jakarta.persistence.*;
+package ch.cern.todo.dto;
 
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "tasks")
-public class Task {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class TaskDTO {
     private Long taskId;
-
     private String taskName;
     private String taskDescription;
     private Timestamp deadline;
+    private Long categoryId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CATEGORY_ID")
-    private TaskCategory taskCategory;
 
     public Long getTaskId() {
         return taskId;
@@ -26,7 +17,6 @@ public class Task {
     public void setTaskId(Long taskId) {
         this.taskId = taskId;
     }
-
     public String getTaskName() {
         return taskName;
     }
@@ -51,23 +41,11 @@ public class Task {
         this.deadline = deadline;
     }
 
-    public TaskCategory getTaskCategory() {
-        return taskCategory;
-    }
-
-    public void setTaskCategory(TaskCategory taskCategory) {
-        this.taskCategory = taskCategory;
-    }
-
-    @Transient
     public Long getCategoryId() {
-        return taskCategory != null ? taskCategory.getCategoryId() : null;
+        return categoryId;
     }
 
     public void setCategoryId(Long categoryId) {
-        if (taskCategory == null) {
-            taskCategory = new TaskCategory();
-        }
-        taskCategory.setCategoryId(categoryId);
+        this.categoryId = categoryId;
     }
 }
