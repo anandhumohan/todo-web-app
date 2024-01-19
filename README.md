@@ -32,11 +32,12 @@ Follow these steps to get the project up and running:
 3. **Build and Run the Backend**:
 
    ```bash
+   cd todo-web-app
    ./gradlew build
-   java -jar build/libs/todo-web-app.jar
+   java -jar build/libs/todo-0.0.1-SNAPSHOT.jar
    ```
 
-   The Spring Boot backend should now be running on `http://localhost:8080`.
+   The Spring Boot backend should now be running on `http://localhost:4200/`.
 
 4. **Access the Application**:
 
