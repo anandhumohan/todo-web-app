@@ -1,0 +1,57 @@
+<div class="todo-container">
+  <h1 class="todo-title">Your TODO List</h1>
+  <div class="todo-form">
+    <input class="input-field" type="text" [(ngModel)]="taskName" placeholder="Task name"/>
+    <textarea class="input-field" [(ngModel)]="taskDescription" placeholder="Description"></textarea>
+    <div class="input-container">
+      <input class="input-field date-input" type="datetime-local" [(ngModel)]="deadline">
+      <label class="input-label">Category</label>
+      <select class="input-field select-input" [(ngModel)]="selectedCategoryId">
+        <option value="" disabled selected>Select Category</option>
+        <option *ngFor="let category of taskCategories" [value]="category.categoryId">
+          {{ category.categoryName }}
+        </option>
+      </select>
+    </div>
+    <div class="actions">
+      <button class="add-task-btn" (click)="addTask()">Add task</button>
+    </div>
+  </div>
+  <div class="todo-list">
+    <div *ngFor="let task of tasks; let i = index" class="todo-item">
+      <!-- Display mode -->
+      <div *ngIf="editingTaskId !== task.taskId" class="task-content">
+        <div class="task-details">
+          <input type="checkbox">
+          <span>{{ task.taskName }}</span>
+        </div>
+        <div class="task-actions">
+          <button class="view-task-btn" (click)="editTask(task)">Edit</button>
+          <button class="view-task-btn" (click)="deleteTask(task)">Delete</button>
+        </div>
+      </div>
+
+      <!-- Edit mode -->
+      <ng-container *ngIf="editingTaskId === task.taskId">
+        <div class="todo-form">
+          <input class="input-field" type="text" [(ngModel)]="task.taskName" placeholder="Task name"/>
+          <textarea class="input-field" [(ngModel)]="task.taskDescription" placeholder="Description"></textarea>
+          <div class="input-container">
+            <input class="input-field date-input" type="datetime-local" [(ngModel)]="task.deadline">
+            <select class="input-field select-input" [(ngModel)]="task.categoryId">
+              <option value="" disabled>Category</option>
+              <option *ngFor="let category of taskCategories" [ngValue]="category.categoryId">
+                {{ category.categoryName }}
+              </option>
+            </select>
+          </div>
+          <div class="actions">
+            <button class="view-task-btn" (click)="saveTask(task)">Save</button>
+            <button class="view-task-btn" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>
