@@ -25,14 +25,14 @@ public class TaskController {
 
     @PostMapping
     public TaskDTO createTask(@RequestBody TaskDTO taskDTO) {
-        logger.info("Received request to create task with name: {}", taskDTO.getTaskName());
+        logger.info("Request to create task with name: {}", taskDTO.getTaskName());
 
         return taskService.createTask(taskDTO);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskDTO> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
-        logger.info("Received request to update task with ID: {}", id);
+        logger.info("Request to update task with ID: {}", id);
 
         return taskService.updateTask(id, taskDTO)
                 .map(ResponseEntity::ok)
@@ -41,7 +41,7 @@ public class TaskController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
-        logger.info("Received request to get task by ID: {}", id);
+        logger.info("Request to get task by ID: {}", id);
 
         return taskService.getTaskById(id)
                 .map(ResponseEntity::ok)
@@ -50,14 +50,14 @@ public class TaskController {
 
     @GetMapping
     public List<TaskDTO> getAllTasks() {
-        logger.info("Received request to get all tasks");
+        logger.info("Request to get all tasks");
 
         return taskService.getAllTasks();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTask(@PathVariable Long id) {
-        logger.info("Received request to delete task with ID: {}", id);
+        logger.info("Request to delete task with ID: {}", id);
 
         taskService.deleteTask(id);
         return ResponseEntity.ok().build();
