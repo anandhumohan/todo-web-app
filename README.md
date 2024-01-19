@@ -37,11 +37,11 @@ Follow these steps to get the project up and running:
    java -jar build/libs/todo-0.0.1-SNAPSHOT.jar
    ```
 
-   The Spring Boot backend should now be running on `http://localhost:4200/`.
+   The Spring Boot backend should now be running on `http://localhost:8080/`.
 
 4. **Access the Application**:
 
-   Open your web browser and visit `http://localhost:8080` to access the application.
+   Open your web browser and visit `http://localhost:4200` to access the application.
 
 5. **Improvements**:
 
