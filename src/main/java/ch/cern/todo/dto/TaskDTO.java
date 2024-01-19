@@ -17,6 +17,7 @@ public class TaskDTO {
     public void setTaskId(Long taskId) {
         this.taskId = taskId;
     }
+
     public String getTaskName() {
         return taskName;
     }

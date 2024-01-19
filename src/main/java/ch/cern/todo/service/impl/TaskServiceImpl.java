@@ -34,6 +34,7 @@ public class TaskServiceImpl implements TaskService {
         task = taskRepository.save(task);
         return convertToDTO(task);
     }
+
     @Override
     public Optional<TaskDTO> updateTask(Long id, TaskDTO taskDTO) {
         Task task = taskRepository.findById(id)

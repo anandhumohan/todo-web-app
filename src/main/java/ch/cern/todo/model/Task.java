@@ -10,7 +10,6 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long taskId;
-
     private String taskName;
     private String taskDescription;
     private Timestamp deadline;
@@ -59,15 +58,4 @@ public class Task {
         this.taskCategory = taskCategory;
     }
 
-    @Transient
-    public Long getCategoryId() {
-        return taskCategory != null ? taskCategory.getCategoryId() : null;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        if (taskCategory == null) {
-            taskCategory = new TaskCategory();
-        }
-        taskCategory.setCategoryId(categoryId);
-    }
 }
